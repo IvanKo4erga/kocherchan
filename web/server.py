@@ -6,6 +6,7 @@ from data.posts import Posts
 from data.add_post_form import AddPostForm
 from data.register import RegisterForm
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+import os
 
 app = Flask(__name__)
 login_manager = LoginManager()
@@ -105,4 +106,5 @@ def reqister():
 
 
 if __name__ == '__main__':
-    app.run(port=8080, host='127.0.0.1')
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
